@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import DarkModeProvider from './theme/DarkModeContextProvider';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
 
                 </Routes>
 
-              <h3>Footer</h3>
+              <Footer/>
 
           </div>
 

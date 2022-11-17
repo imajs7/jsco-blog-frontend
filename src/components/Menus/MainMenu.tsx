@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ITheme from "../../models/ITheme";
+import { DarkModeContext } from "../../theme/DarkModeContextProvider";
 
 type StyleProps = {
     theme: ITheme
 }
 
 const MenuDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
-    height: 35px;
+    height: 45px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -18,16 +20,48 @@ const MenuDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
         padding-block: 8px;
         transition: all 400ms ease;
     }
+
+    &.lightbackground {
+        a {
+            color: ${(theme) => theme.colors.darkcolor};
+
+            &:hover {
+                color: ${(theme) => theme.colors.accentcolor};
+            }
+        }
+
+        button {
+            color: ${(theme) => theme.colors.lightcolor};
+            background-color:${(theme) => theme.colors.darkcolor};
+        }
+    }
+
+    &.darkbackground {
+        a {
+            color: ${(theme) => theme.colors.lightcolor};
+
+            &:hover {
+                color: ${(theme) => theme.colors.accentcolor};
+            }
+        }
+
+        button {
+            color: ${(theme) => theme.colors.darkcolor};
+            background-color:${(theme) => theme.colors.lightcolor};
+        }
+    }
     
 `;
 
 const Mainmenu = () => {
 
-    return (
-        <MenuDiv>
+    const { darkMode } = useContext( DarkModeContext );
 
-            <Link to="/feeds">Feeds</Link>
-            <Link to="/posts">Posts</Link>
+    return (
+        <MenuDiv className={darkMode ? 'darkbackground' : 'lightbackground'}>
+
+            <Link to="/feed">Feed</Link>
+            <Link to="/myspace">Myspace</Link>
             <Link to="/authors">Authors</Link>
             <Link to="/notices">Notices</Link>
             

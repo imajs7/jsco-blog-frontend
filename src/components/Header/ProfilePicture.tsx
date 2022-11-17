@@ -17,12 +17,11 @@ const DisplayPicture = styled.div.attrs(( {theme} : StyleProps ) => theme)`
     border: 2px solid ${(theme) => theme.colors.accentcolor};
     padding: 3px;
     overflow: hidden;
-    margin-bottom: -25%;
 
     img {
         height: 100%;
         width: 100%;
-        border-radius: 91px;
+        border-radius: 1000px;
         object-fit: cover;
     }
 

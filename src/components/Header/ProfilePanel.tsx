@@ -14,45 +14,45 @@ type StyleProps = {
 
 const ProfileDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
 
-    height: 180px;
-    display: flex;
-    align-items: end;
-
     & > div {
+        min-height: 220px;
+        padding: 20px;
         display: flex;
-        align-items: end;
+        align-items: center;
+        justify-content: start;
         gap: 30px;
 
-        .profile-info {
-            flex-grow: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-
-            @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
-                gap: 5px;
-                flex-direction: column;
-                justify-content: center;
-                align-items: start;
-                margin-bottom:5px;
-            }
-
+        @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
+            flex-direction: column;
+            justify-content: center;
         }
     }
 
-    .short-intro {
-        * {
+    .profile__info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile__title {
+            width: (100%, 600px);
+        }
+
+        .profile__title,
+        .profile__short-intro {
             color: #FFFFFF;
         }
-    }
 
-    @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
-        height: 160px;
+        button {
+            align-self: start;
 
-        & > div {
-            gap: 20px;
+            @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
+                align-self: center;
+            }
         }
     }
 `;
@@ -68,17 +68,13 @@ const ProfilePanel = () => {
     return ( 
         <ProfileDiv style={bannerImage}>
             <Container>
-                <div className="display-picture">
+                <div className="profile__picture">
                     <ProfilePicture/>
                 </div>
-                <div className="profile-info">
-                    <div className="short-intro">
-                        <h1>Anurag Jaisingh <span style={{fontSize: '20px'}}><Verified/></span></h1>
-                        <p>Posts on socio-economic & political issues</p>
-                    </div>
-                    <div className="follow">
-                        <ActionButton>Follow</ActionButton>
-                    </div>
+                <div className="profile__info">
+                    <h1 className="profile__title">Anurag Jaisingh <Verified/></h1>
+                    <p className="profile__short-intro">Posts on socio-economic & political issues</p>
+                    <ActionButton>Follow</ActionButton>
                 </div>
             </Container>
         </ProfileDiv>
