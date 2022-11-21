@@ -25,7 +25,7 @@ const theme = {
     },
 
     padding: {
-        tiny: "2px",
+        tiny: "0.25rem",
         small: "0.5rem",
         base: "0.7rem",
         medium: "1.1rem",
@@ -34,7 +34,7 @@ const theme = {
     },
 
     margin: {
-        tiny: "2px",
+        tiny: "0.25rem",
         small: "0.5rem",
         base: "0.7rem",
         medium: "1.1rem",

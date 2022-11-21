@@ -1,5 +1,5 @@
 export default interface ISettings {
-    id: number,
+    _id: string,
     keyname: string,
     description: string,
     value: string

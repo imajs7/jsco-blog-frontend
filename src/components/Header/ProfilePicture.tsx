@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ITheme from "../../models/ITheme";
 
 import apiConfig from '../../services/external/apiConfig';
+import { getUserObject } from "../../services/external/getUser";
 
 const IMG_URL = apiConfig.IMG_PATH;
 
@@ -31,9 +33,23 @@ const DisplayPicture = styled.div.attrs(( {theme} : StyleProps ) => theme)`
 `;
 
 const ProfilePicture = () => {
+
+    const [ profileImg, setProfileImg ] = useState<String>( 'abcd.jpg' );
+
+    useEffect(
+        () => {
+            const getProfileImage = async () => {
+                const userObject = await getUserObject();
+                setProfileImg( userObject );
+            };
+
+            getProfileImage();
+        }, []
+    );
+
     return ( 
         <DisplayPicture>
-            <img src={`${IMG_URL}/abcd.jpg`} alt="dp" />
+            <img src={`${IMG_URL}/${profileImg}`} alt="dp" />
         </DisplayPicture>
      );
 }

@@ -5,6 +5,8 @@ import Verified from "../Verified/Verified";
 import ProfilePicture from "./ProfilePicture";
 import { Container } from '../../theme/CustomStyledComponemts';
 import { ActionButton } from "../Buttons/ActionButton";
+import { useEffect, useState } from "react";
+import { getBannerObject } from "../../services/external/getSettings";
 
 const IMG_URL = apiConfig.IMG_PATH;
 
@@ -13,6 +15,10 @@ type StyleProps = {
 }
 
 const ProfileDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     & > div {
         min-height: 220px;
@@ -57,16 +63,25 @@ const ProfileDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
     }
 `;
 
-const bannerImage = {
-    background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("${IMG_URL}/abcd.jpg")`,
-
-    backgroundPosition: 'center center',
-    backgroundSize: 'cover'
-};
-
 const ProfilePanel = () => {
+
+    const [ appBanner, setAppBanner ] = useState<String>( 'abcd.jpg' );
+
+    useEffect(
+        () => {
+            const getBanner = async () => {
+                const bannerObject = await getBannerObject();
+                setAppBanner( bannerObject.value );
+            };
+
+            getBanner();
+        }, []
+    );
+
     return ( 
-        <ProfileDiv style={bannerImage}>
+        <ProfileDiv style={{ 
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("${IMG_URL}/${appBanner}")`,
+        }} >
             <Container>
                 <div className="profile__picture">
                     <ProfilePicture/>

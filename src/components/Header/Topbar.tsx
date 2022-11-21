@@ -6,6 +6,7 @@ import styled from "styled-components";
 import ITheme from "../../models/ITheme";
 import { Container } from "../../theme/CustomStyledComponemts";
 import { DarkModeContext } from "../../theme/DarkModeContextProvider";
+import Logo from "../Logo/Logo";
 
 type StyleProps = {
     theme: ITheme,
@@ -14,14 +15,13 @@ type StyleProps = {
 const TopbarDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
 
     & > div {
-        height: 35px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 20px;
     }
 
-    .leftControls,
     .rightControls {
 
         height: 100%;
@@ -93,11 +93,7 @@ const Topbar = () => {
     return ( 
         <TopbarDiv className={darkMode ? 'darkbackground' : 'lightbackground'}>
             <Container>
-                <div className="leftControls">
-                    <Link to="/terms">Term of use</Link>
-                    <Link to="/privacy">Privacy</Link>
-                    <Link to="/contact">Contact</Link>
-                </div>
+                <Logo/>
                 <div className="rightControls">
                     { 
                         darkMode ? (
