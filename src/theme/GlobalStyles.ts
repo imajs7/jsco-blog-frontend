@@ -19,16 +19,43 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-size: ${theme.fonts.sizes.base};
         font-family: ${theme.fonts.styles.paragraph};
+        background-color: #ccc;
     }
 
     .darkbackground {
         color: ${theme.colors.lightcolor};
         background-color:${theme.colors.darkcolor};
+
+        a {
+            color: ${theme.colors.lightcolor};
+
+            &:hover {
+                color: ${theme.colors.accentcolor};
+            }
+        }
+
+        button {
+            color: ${theme.colors.darkcolor};
+            background-color:${theme.colors.lightcolor};
+        }
     }
 
     .lightbackground {
         color: ${theme.colors.darkcolor};
         background-color:${theme.colors.lightcolor};
+
+        a {
+            color: ${theme.colors.darkcolor};
+
+            &:hover {
+                color: ${theme.colors.accentcolor};
+            }
+        }
+
+        button {
+            color: ${theme.colors.lightcolor};
+            background-color:${theme.colors.darkcolor};
+        }
     }
 
     ul {

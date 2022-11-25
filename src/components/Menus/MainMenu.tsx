@@ -60,7 +60,7 @@ const Mainmenu = () => {
     return (
         <MenuDiv className={darkMode ? 'darkbackground' : 'lightbackground'}>
 
-            <Link to="/feed">Feed</Link>
+            <Link to="/">Feed</Link>
             <Link to="/myspace">Myspace</Link>
             <Link to="/authors">Authors</Link>
             <Link to="/notices">Notices</Link>

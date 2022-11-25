@@ -20,18 +20,16 @@ const ProfileDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
     background-repeat: no-repeat;
     background-size: cover;
 
-    & > div {
-        min-height: 220px;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        gap: 30px;
+    min-height: 220px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 30px;
 
-        @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
-            flex-direction: column;
-            justify-content: center;
-        }
+    @media screen and (max-width: ${(theme) => theme.screen.mobile}) {
+        flex-direction: column;
+        justify-content: center;
     }
 
     .profile__info {
@@ -82,7 +80,7 @@ const ProfilePanel = () => {
         <ProfileDiv style={{ 
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("${IMG_URL}/${appBanner}")`,
         }} >
-            <Container>
+
                 <div className="profile__picture">
                     <ProfilePicture/>
                 </div>
@@ -91,7 +89,7 @@ const ProfilePanel = () => {
                     <p className="profile__short-intro">Posts on socio-economic & political issues</p>
                     <ActionButton>Follow</ActionButton>
                 </div>
-            </Container>
+
         </ProfileDiv>
      );
 }

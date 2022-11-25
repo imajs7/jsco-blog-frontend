@@ -41,12 +41,19 @@ const LoadingDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
     }
 `;
 
+const LoadingContainer = styled.div`
+    display: grid;
+    place-content: center;
+`;
+
 const Loading = () => {
-    return ( 
-        <LoadingDiv className="loading">
-            <div></div>
-            <div></div>
-        </LoadingDiv>
+    return (
+        <LoadingContainer>
+            <LoadingDiv className="loading">
+                <div></div>
+                <div></div>
+            </LoadingDiv>
+        </LoadingContainer>
      );
 }
  

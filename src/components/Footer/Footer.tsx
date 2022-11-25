@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import ITheme from "../../models/ITheme";
+import { DarkModeContext } from "../../theme/DarkModeContextProvider";
 
 type StyleProps = {
     theme: ITheme,
@@ -16,9 +18,12 @@ const FooterDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
 `;
 
 const Footer = () => {
+
+    const { darkMode } = useContext( DarkModeContext );
+
     return ( 
         <>
-            <FooterDiv>
+            <FooterDiv className={darkMode ? 'lightbackground' : 'darkbackground'}>
                 <h4>&copy; copyright 2022 Blog</h4>
             </FooterDiv>
         </>

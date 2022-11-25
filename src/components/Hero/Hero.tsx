@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ISettings from "../../models/ISettings";
 import { getAllSettings } from "../../services/external/getSettings";
-import { Container } from "../../theme/CustomStyledComponemts";
 import Loading from "../Loading/Loading";
 
 const Hero = () => {
@@ -21,7 +20,7 @@ const Hero = () => {
 
     return ( 
 
-        <Container>
+        <>
             {
                 data ? (
                     <div>
@@ -31,7 +30,7 @@ const Hero = () => {
                     </div>
                 ) : (<Loading/>)
             }
-        </Container>
+        </>
 
      );
 }

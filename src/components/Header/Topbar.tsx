@@ -4,7 +4,6 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ITheme from "../../models/ITheme";
-import { Container } from "../../theme/CustomStyledComponemts";
 import { DarkModeContext } from "../../theme/DarkModeContextProvider";
 import Logo from "../Logo/Logo";
 
@@ -14,13 +13,11 @@ type StyleProps = {
 
 const TopbarDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
 
-    & > div {
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-    }
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 
     .rightControls {
 
@@ -37,35 +34,6 @@ const TopbarDiv = styled.div.attrs(( {theme} : StyleProps ) => theme)`
         }
     }
 
-    &.lightbackground {
-        a {
-            color: ${(theme) => theme.colors.darkcolor};
-
-            &:hover {
-                color: ${(theme) => theme.colors.accentcolor};
-            }
-        }
-
-        button {
-            color: ${(theme) => theme.colors.lightcolor};
-            background-color:${(theme) => theme.colors.darkcolor};
-        }
-    }
-
-    &.darkbackground {
-        a {
-            color: ${(theme) => theme.colors.lightcolor};
-
-            &:hover {
-                color: ${(theme) => theme.colors.accentcolor};
-            }
-        }
-
-        button {
-            color: ${(theme) => theme.colors.darkcolor};
-            background-color:${(theme) => theme.colors.lightcolor};
-        }
-    }
 `;
 
 const Topbar = () => {
@@ -76,23 +44,9 @@ const Topbar = () => {
         darModeHandler( null );
     };
 
-    useEffect(
-        () => {
-            if(darkMode) {
-                document.body.classList.remove( 'lightbackground' );
-                document.body.classList.add( 'darkbackground' );
-            } else {
-                document.body.classList.remove( 'darkbackground' );
-                document.body.classList.add( 'lightbackground' );
-            }
-            
-        },
-        [darkMode]
-    );
-
     return ( 
-        <TopbarDiv className={darkMode ? 'darkbackground' : 'lightbackground'}>
-            <Container>
+        <TopbarDiv className={darkMode ? 'lightbackground' : 'darkbackground'}>
+
                 <Logo/>
                 <div className="rightControls">
                     { 
@@ -113,7 +67,7 @@ const Topbar = () => {
                     <Link to="/abcd">Settings</Link>
                     <Link to="/efgh">Signout</Link>
                 </div>
-            </Container>
+
         </TopbarDiv>
      );
 }
